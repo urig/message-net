@@ -7,7 +7,7 @@ namespace MessagesService
     public interface IMessagesRepository
     {
         IEnumerable<Message> GetMessages(string recipient);
-        void AddMessage(string recipient, Message message);
+        Message AddMessage(string recipient, Message message);
     }
 
     public class MessagesRepository : IMessagesRepository
@@ -29,9 +29,10 @@ namespace MessagesService
             return new List<Message>();
         }
 
-        public void AddMessage(string recipient, Message message)
+        public Message AddMessage(string recipient, Message message)
         {
             ValidateRecipient(recipient);
+            message.Id = Guid.NewGuid();
             message.Recipient = recipient;
             _store.AddOrUpdate(
                 key:
@@ -44,6 +45,7 @@ namespace MessagesService
                             messages.Add(message);
                             return messages;
                         });
+            return message;
         }
 
         private static void ValidateRecipient(string recipient)

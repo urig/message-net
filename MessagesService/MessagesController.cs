@@ -38,8 +38,8 @@ namespace MessagesService
         {
             try
             {
-                _repository.AddMessage(recipient, message);
-                return Ok();
+                var result = _repository.AddMessage(recipient, message);
+                return Ok(result);
             }
             catch (Exception ex)
             {
