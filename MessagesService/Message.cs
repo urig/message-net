@@ -1,3 +1,5 @@
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 namespace MessagesService
 {
     public class Message

@@ -32,5 +32,21 @@ namespace MessagesService.Controllers
                 return StatusCode(500);
             }
         }
+
+        [HttpPost("{recipient}")]
+        public IActionResult Post(string recipient, Message message)
+        {
+            try
+            {
+                _repository.AddMessage(recipient, message);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning($"Exception in MessagesController.Post(). message: [{message}]", ex);
+                return StatusCode(500);
+            }
+
+        }
     }
 }
