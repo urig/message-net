@@ -27,6 +27,8 @@ namespace MessagesService
         {
             services.AddControllers();
 
+            services.AddSwaggerGen();
+
             // Dependency Injection
             services
                 .AddSingleton<IMessagesRepository, MessagesRepository>();
@@ -49,6 +51,13 @@ namespace MessagesService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

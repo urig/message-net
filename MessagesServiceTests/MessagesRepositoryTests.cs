@@ -10,7 +10,6 @@ namespace MessagesServiceTests
 {
     public class MessagesRepositoryTests
     {
-
         [Theory]
         [InlineData(null)]
         [InlineData("")]
