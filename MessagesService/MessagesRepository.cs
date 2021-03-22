@@ -34,16 +34,16 @@ namespace MessagesService
             ValidateRecipient(recipient);
             message.Recipient = recipient;
             _store.AddOrUpdate(
-                key: 
+                key:
                     message.Recipient,
                 addValue: // new recipient =  put message in new list
-                    new List<Message> { message }, 
+                    new List<Message> { message },
                 updateValueFactory: // existing recipient = add message to existing list
-                (_, messages) => 
-                    {
-                        messages.Add(message);
-                        return messages;
-                    });
+                    (_, messages) =>
+                        {
+                            messages.Add(message);
+                            return messages;
+                        });
         }
 
         private static void ValidateRecipient(string recipient)

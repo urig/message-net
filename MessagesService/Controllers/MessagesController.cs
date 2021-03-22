@@ -28,7 +28,7 @@ namespace MessagesService.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogWarning($"Exception in MessagesController.Get(). recipient: [{recipient}]", ex);
+                _logger.LogError($"Exception in MessagesController.Get(). recipient: [{recipient}]", ex);
                 return StatusCode(500);
             }
         }
@@ -43,7 +43,7 @@ namespace MessagesService.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogWarning($"Exception in MessagesController.Post(). message: [{message}]", ex);
+                _logger.LogError($"Exception in MessagesController.Post(). message: [{message}]", ex);
                 return StatusCode(500);
             }
 
