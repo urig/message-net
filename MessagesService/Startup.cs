@@ -26,6 +26,10 @@ namespace MessagesService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Dependency Injection
+            services
+                .AddSingleton<IMessagesRepository, MessagesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
